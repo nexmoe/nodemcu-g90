@@ -21,9 +21,10 @@ void miotPowerState(const String & state)
     myservo.attach(PIN_SERVO);
  
     if (state == BLINKER_CMD_ON) {
-        myservo.write(29);//舵机正转度数
+        myservo.write(40);//舵机正转度数
+        delay(3000); 
+        myservo.write(70);//舵机归位
         delay(1000); 
-        myservo.write(0);//舵机归位
         
         BlinkerMIOT.powerState("on");
         BlinkerMIOT.print();
@@ -31,9 +32,10 @@ void miotPowerState(const String & state)
         oState = true;
     }
     else if (state == BLINKER_CMD_OFF) {
-        myservo.write(-29);//舵机反转度数
+        myservo.write(100);//舵机反转度数
+        delay(3000); 
+        myservo.write(70);//舵机归位
         delay(1000); 
-        myservo.write(0);//舵机归位
         
         BlinkerMIOT.powerState("off");
         BlinkerMIOT.print();  
